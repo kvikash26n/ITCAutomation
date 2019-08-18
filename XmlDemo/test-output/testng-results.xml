@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="48" started-at="2019-02-01T11:53:09Z" finished-at="2019-02-01T11:53:09Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="48" started-at="2019-02-01T11:53:09Z" finished-at="2019-02-01T11:53:09Z">
+      <class name="test.demo">
+        <test-method status="PASS" signature="mainnn()[pri:0, instance:test.demo@61baa894]" name="mainnn" duration-ms="7" started-at="2019-02-01T11:53:09Z" finished-at="2019-02-01T11:53:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- mainnn -->
+      </class> <!-- test.demo -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

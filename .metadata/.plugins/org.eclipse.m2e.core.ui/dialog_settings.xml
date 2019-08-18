@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item value="All Catalogs" key="catalog"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="wizardPage">
+		<list key="groupId">
+			<item value="Prct"/>
+		</list>
+		<list key="name">
+			<item value="aa"/>
+		</list>
+		<list key="artifactId">
+			<item value="Prct"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="C:\Automation\ITCHotelMobileApp"/>
+			<item value="C:\Automation\ITCHotels"/>
+			<item value="C:\Automation"/>
+			<item value="C:\Automation\SpiceJetPOC\src\Test\AgentBooking.java"/>
+			<item value="C:\Automation\SpiceJetPOC"/>
+			<item value="C:\Automation\SpiceJetPOC\src\Test\TripBooking.java"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="SalesforceApiDemo.com.api"/>
+			<item value="Amedeous.com.Amedeous"/>
+			<item value="ITCHotels_Automatiom.ITCHotels_Automatiom"/>
+			<item value="ITCHotels.ITCHotels"/>
+		</list>
+		<list key="groupId">
+			<item value="SalesforceApiDemo"/>
+			<item value="Amedeous"/>
+			<item value="ITCHotels_Automatiom"/>
+			<item value="ITCHotels"/>
+		</list>
+		<list key="artifactId">
+			<item value="com.api"/>
+			<item value="com.Amedeous"/>
+			<item value="ITCHotels_Automatiom"/>
+			<item value="ITCHotels"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+</section>

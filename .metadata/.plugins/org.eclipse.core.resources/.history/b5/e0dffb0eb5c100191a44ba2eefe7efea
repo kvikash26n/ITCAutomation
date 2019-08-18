@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+package com.bot;
+
+/**
+ * @author 29265
+ *
+ */
+public class practise {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

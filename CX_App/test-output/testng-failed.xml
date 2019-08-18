@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Test Suite]">
+  <listeners>
+    <listener class-name="com.accenture.omnichannelframework.api.OmnichannelFrameworkListener"/>
+  </listeners>
+  <test name="Test(failed)">
+    <classes>
+      <class name="Desktop.Attach_Form">
+        <methods>
+          <include name="uplaod_Generate_Forms"/>
+          <include name="before"/>
+        </methods>
+      </class> <!-- Desktop.Attach_Form -->
+      <class name="Desktop.CXLogin">
+        <methods>
+          <include name="before"/>
+          <include name="launch" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- Desktop.CXLogin -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Test Suite] -->

@@ -1,0 +1,13 @@
+MODULES_MANAGER_V2
+Lib.utility|C:\AutomationITC\Petra_POC\Lib\utility.py
+main_script.Petraint|C:\AutomationITC\Petra_POC\main_script\Petraint.py
+main_script.__init__|C:\AutomationITC\Petra_POC\main_script\__init__.py
+main_script.call_oops|C:\AutomationITC\Petra_POC\main_script\call_oops.py
+main_script.emailsend|C:\AutomationITC\Petra_POC\main_script\emailsend.py
+main_script.oops|C:\AutomationITC\Petra_POC\main_script\oops.py
+main_script.petraaa|C:\AutomationITC\Petra_POC\main_script\petraaa.py
+main_script.runn|C:\AutomationITC\Petra_POC\main_script\runn.py
+main_script.runnable_v1|C:\AutomationITC\Petra_POC\main_script\runnable_v1.py
+main_script.runnable_v1_1|C:\AutomationITC\Petra_POC\main_script\runnable_v1_1.py
+main_script.runnable_v2|C:\AutomationITC\Petra_POC\main_script\runnable_v2.py
+main_script.seleniumPOC|C:\AutomationITC\Petra_POC\main_script\seleniumPOC.py

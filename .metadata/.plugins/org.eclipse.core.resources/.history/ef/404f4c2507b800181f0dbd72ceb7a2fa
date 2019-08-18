@@ -1,0 +1,28 @@
+/**
+ * 
+ */
+package com.bot;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+/**
+ * @author 29265
+ *
+ */
+public class jjaj {
+	//public static String URL = "http://www.spicejet.com/";
+	public static void main(String ag[]) throws MalformedURLException, IOException {
+	
+		URL u = new URL ( "http://www.example.com/");
+		HttpURLConnection huc =  ( HttpURLConnection )  u.openConnection (); 
+		huc.setRequestMethod ("GET");  //OR  huc.setRequestMethod ("HEAD"); 
+		huc.connect () ; 
+		int code = huc.getResponseCode() ;
+		System.out.println(code);
+	
+
+}
+}

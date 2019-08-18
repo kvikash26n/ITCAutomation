@@ -1,0 +1,58 @@
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+
+/**
+ * 
+ */
+
+/**
+ * @author 29265
+ *
+ */
+public class DemoHeadleass {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 System.setProperty("webdriver.chrome.driver",
+                 "D:\\chromedriver.exe");
+         ChromeOptions options = new ChromeOptions();
+         options.addArguments("headless");
+         options.addArguments("window-size=1200x600");
+         WebDriver driver = new ChromeDriver(options);
+       //  driver.get("https	://contentstack.built.io");
+         driver.get("https://www.google.com/");
+         System.out.println("title is: " + driver.getTitle());
+         List<WebElement> abc = driver.findElements(By.xpath("//input"));
+    System.out.println(abc);
+         abc.get(0).click();
+         abc.get(1).click();
+         abc.get(2).click();
+         abc.get(3).click();
+ 	/*	List<String> xyz = new ArrayList<String>();
+ 		for (WebElement e : abc) {
+ 			xyz.add(e.getText());
+ 		}
+
+ 		System.out.println(xyz);*/
+         
+       
+        //// File scrFile = ((TakesScreenshot) driver)
+          //       .getScreenshotAs(OutputType.FILE);
+        // FileUtils.copyFile(scrFile, new File("pathTOSaveFile"));
+         driver.quit();
+	}
+
+}

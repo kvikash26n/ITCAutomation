@@ -1,0 +1,221 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+<groupId>Amedeous</groupId>
+  <artifactId>com.Amedeous</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>com.Amedeous</name>
+  <url>http://maven.apache.org</url>
+
+
+	<properties>
+		<selenium.version>3.8.1</selenium.version>
+		<guava.version>23.0</guava.version>
+		<!-- <testng.version>6.14.2</testng.version> -->
+		<log4j.version>1.2.17</log4j.version>
+		<poi.version>3.17</poi.version>
+		<json.version>20171018</json.version>
+		<extentreport.version>3.1.2</extentreport.version>
+		<commons-lang3.version>3.6</commons-lang3.version>
+		<commons-io.version>1.3.2</commons-io.version>
+		<groovy.version>2.4.5</groovy.version>
+		<httpclient.version>4.5.3</httpclient.version>
+		<httpcore.version>4.4.8</httpcore.version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.plugin.version>3.6.1</maven.compiler.plugin.version>
+		<maven.surefire.plugin.version>2.20</maven.surefire.plugin.version>
+		<maven.antrun.plugin.version>1.8</maven.antrun.plugin.version>
+		<java.version>1.8</java.version>
+
+		<testName>testng.xml</testName>
+		<execEnv></execEnv>
+		<execClient></execClient>
+		<execBrowser></execBrowser>
+		<execMode>Local</execMode>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<!-- <encoding>UTF-8</encoding> -->
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.plugin.version}</version>
+				<configuration>
+					<systemPropertyVariables>
+						<Test.Name>${testName}</Test.Name>
+						<Execution.Environment>${execEnv}</Execution.Environment>
+						<Execution.Client>${execClient}</Execution.Client>
+						<Execution.Browser>${execBrowser}</Execution.Browser>
+						<Execution.Mode>${execMode}</Execution.Mode>
+						<Selenium.Version>${selenium.version}</Selenium.Version>
+					</systemPropertyVariables>
+					<testFailureIgnore>true</testFailureIgnore>
+					<properties>
+						<property>
+							<name>usedefaultlisteners</name>
+							<value>false</value>
+						</property>
+						<property>
+							<name>listener</name>
+							<value>
+								org.testng.reporters.EmailableReporter,
+								fusion.library.reporters.FusionReporter,
+								fusion.library.reporters.FusionSmokeReporter
+							</value>
+						</property>
+					</properties>
+					<suiteXmlFiles>
+						<suiteXmlFile>${testName}</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+				<goals>
+					<goal>test</goal>
+				</goals>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>${maven.antrun.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>Clean-Processes</id>
+						<phase>test</phase>
+						<configuration>
+							<target>
+								<exec executable="taskkill">
+									<arg line="/f /im chromedriver.exe " />
+								</exec>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+
+	<!-- 	<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+		</dependency>
+ -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>${extentreport.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>apache-log4j-extras</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>${json.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>${groovy.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>${httpcore.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>alm.selelnium.integration</groupId>
+			<artifactId>alm-selenium-integration</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/ext-lib/selenium-alm-integration.jar</systemPath>
+		</dependency>
+
+		<dependency>
+	<groupId>encrypto</groupId>
+			<artifactId>encrypto</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/ext-lib/encrypto-api.jar</systemPath>
+		</dependency>
+	</dependencies>
+</project>
+

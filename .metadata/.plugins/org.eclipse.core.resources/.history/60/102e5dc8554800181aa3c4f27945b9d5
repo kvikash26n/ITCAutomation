@@ -1,0 +1,354 @@
+package Test;
+
+import static org.testng.Assert.assertEquals;
+
+
+import java.awt.AWTException;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.LogStatus;
+
+import utility.util;
+
+public class AgentBooking extends TestControlAgent {
+
+	// *[text()='SG 3302']//ancestor::tr//span[@class='flightfare']
+
+	WebDriver driver;
+	String nr;
+	int a=0,k=3;
+	
+	 List<String> lines ;
+		String tpath="C:\\Users\\29265\\Desktop\\title.txt";
+		String Fpath="C:\\Users\\29265\\Desktop\\fname.txt";
+		String Lpath="C:\\Users\\29265\\Desktop\\lname.txt";
+		List<String> getPassengersName(String path) throws IOException
+		{
+			   lines = Files.readAllLines(Paths.get(path));
+		        System.out.println("before booking:="+lines.size());
+		       // System.out.println(lines.get(2));
+		        for (String line : lines) {
+		            System.out.println(line);
+		        }
+				return lines;
+		}
+	public void getresult(ITestResult result) throws IOException {
+		if (result.getStatus() == ITestResult.SUCCESS) {
+			// test.log(LogStatus.PASS, "broswer has been launch");
+			// test.log(LogStatus.PASS, "triptype has been selected");
+			// test.log(LogStatus.PASS, "Date selected successfully");
+			// test.log(LogStatus.PASS, "selection page url got validated successfully");
+			/*
+			 * if(){
+			 * 
+			 * }
+			 */
+
+			// test.log(LogStatus.PASS, "broswer has been closed");
+
+			// test.log(LogStatus.PASS, "Date selected successfully");
+			test.log(LogStatus.PASS, result.getName() + " test is pass");
+
+		} else if (result.getStatus() == ITestResult.SKIP) {
+			test.log(LogStatus.SKIP,
+					result.getName() + " test is skipped and skip reason is:-" + result.getThrowable());
+		} else if (result.getStatus() == ITestResult.FAILURE) {
+			test.log(LogStatus.FAIL, result.getName() + " test is failed" + result.getThrowable());
+			String screen = getScreenshot(nr);
+			test.log(LogStatus.FAIL, test.addScreenCapture(screen));
+		} else if (result.getStatus() == ITestResult.STARTED) {
+			test.log(LogStatus.INFO, result.getName() + " test is started");
+		}
+	}
+
+	@AfterMethod
+	public void afterMethod(ITestResult result) throws IOException {
+
+		getresult(result);
+	}
+
+	@BeforeMethod()
+	public void beforeMethod(Method result) {
+		test = extent.startTest(result.getName());
+		test.log(LogStatus.INFO, result.getName() + " test Started");
+		test.log(LogStatus.INFO, result.getParameterCount() + " " + "inputs");
+
+	}
+
+	@BeforeMethod
+	void launch() throws EncryptedDocumentException, InvalidFormatException, IOException {
+		System.out.println("Welcome to spicejet");
+		String path = "D:\\Selenium\\geckodriver.exe";
+		test.log(LogStatus.PASS, "broswer has been launch");
+		// System.setProperty("webdriver.chrome.driver", path);
+
+		System.setProperty("webdriver.gecko.driver", path);
+		driver = new FirefoxDriver();
+		// WebDriver dr=new ChromeDriver();
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get("http://www.spicejet.com/");
+	//	System.out.println("@BeforeMethod:="+a);
+	//	List namerecord = getPassengerNameDetails();
+
+	}
+
+	@Test(dataProvider = "dataLoader")
+	void Book(String TripType, String DepartureCity, String ArrivalCity, String FlightNo, String Fare,String NoOfPass)
+			throws AWTException, InterruptedException, InvalidFormatException, IOException {
+		//System.out.println(NoOfPass);
+		int np=Integer.parseInt(NoOfPass);
+		List<String> alltitle=getPassengersName(tpath);
+		List<String> allfname=getPassengersName(Fpath);
+		List<String> alllname=getPassengersName(Lpath);
+		/*System.out.println(alltitle);
+		System.out.println(allfname);
+		System.out.println(alllname);*/
+		System.out.println(allfname.size());
+		System.out.println(alltitle.size());
+		System.out.println(alllname.size());
+	//	System.out.println("before booking;="+allnameinfo);
+		// need to add agent login part
+		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+		  WebElement element = driver.findElement(By.id("ctl00_HyperLinkLogin"));
+		  
+	        Actions action = new Actions(driver);
+	 
+	        action.moveToElement(element).build().perform();
+	      Thread.sleep(3000);
+	        driver.findElement(By.xpath("//a[text()='Travel Agent Login']")).click();
+	        Thread.sleep(3000);
+	      driver.findElement(By.id("ControlGroupLoginAgentView_AgentLoginView_TextBoxUserID")).sendKeys("SDMARKETNG");
+	      Thread.sleep(3000); 
+	     
+	      driver.findElement(By.id("ControlGroupLoginAgentView_AgentLoginView_PasswordFieldPassword")).sendKeys("India@123");
+	      Thread.sleep(3000); 
+	      driver.findElement(By.xpath("//*[@type='submit']")).click();
+	        Thread.sleep(9000);
+	        driver.findElement(By.xpath("//*[contains(@class,'closethick')]")).click();
+	       
+		
+
+		List date = getDate(FlightNo);
+	/*	List namerecord = getPassengerNameDetails();
+		while(a<3)
+		{
+			System.out.println(namerecord.get(a));	
+			System.out.println(namerecord.get(a+1));
+			System.out.println(namerecord.get(a+2));
+		}
+		for(int i=a;i<=k;a++) {
+			System.out.println(namerecord.get(i));
+		}*/
+		
+//System.out.println(date);
+		// .tripSelection(TripType,DepartureCity,ArrivalCity);
+		String tripxf = "//*[@id='travelOptions']//*[text()='";
+		String tripxl = "']";
+		// System.out.println(a);
+		driver.findElement(By.xpath(tripxf + TripType + tripxl)).click();
+		test.log(LogStatus.PASS, TripType + " " + "has been selected");
+		
+		driver.findElement(By.xpath(tripxf + TripType + tripxl)).sendKeys(Keys.TAB, DepartureCity);
+		// *[@class='right1']
+		// ArrivalCity
+		driver.findElement(By.xpath("//*[@class='right1 mobile-right destination']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@class='right1 mobile-right destination']")).sendKeys(ArrivalCity);
+		Thread.sleep(2000);
+		Select s = new Select(driver.findElement(By.xpath("//*[contains(@id,'ControlGroupSearchView_AvailabilitySearchInputSearchView_DropDownListPassengerType_ADT')]")));
+		s.selectByVisibleText(NoOfPass);
+		driver.findElement(By.xpath("//*[contains(@id,'custom_date_picker_id_1')]")).click();
+		Thread.sleep(2000);
+		///
+
+		DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+		Date dateobj = new Date();
+		String reportDate = df.format(dateobj);
+		System.out.println("Report Date: " + reportDate);
+		// to split current date n store in varible
+		String datePartscurrent[] = reportDate.split("/");
+		String monthcurrent = datePartscurrent[0];
+		String daycurrent = datePartscurrent[1];
+		String yearcurrent = datePartscurrent[2];
+		System.out.println(monthcurrent + " " + daycurrent + " " + yearcurrent);
+		int i = Integer.parseInt(monthcurrent);
+		int k = Integer.parseInt(daycurrent);
+		int l = Integer.parseInt(yearcurrent);
+
+		// date iteration with booking with given price condition
+		for (int q = 0; q <= date.size(); q++) {
+			String val = (String) date.get(q);
+			String dateParts1[] = val.split("/");
+			String umonth = dateParts1[0];
+			String uday = dateParts1[1];
+			String uyear = dateParts1[2];
+			System.out.println(umonth + " " + uday + " " + uyear);
+			// to convert string to integer
+			int a = Integer.parseInt(umonth);
+			int b = Integer.parseInt(uday);
+
+			int monthdiff = a - i;
+			System.out.println("diff:" + " " + monthdiff);
+	
+			// click opration will go for -1
+			try {
+			if (driver.findElement(By.xpath("//*[contains(@id,'custom_date_picker_id_1')]")).isDisplayed()) {
+				for (int im = 0; im < monthdiff - 1; im++) {
+					driver.findElement(By.xpath("(//*[contains(text(),'Next')])[2]")).click();
+					Thread.sleep(3000);
+				}
+			}
+			}
+			catch (Exception e) {
+				// TODO: handle exception
+			
+				driver.findElement(By.xpath("//*[@class='date-wrapper date_wrapper_1']")).click();
+				Thread.sleep(3000);
+				//value
+			String SelectPageDate =	driver.findElement(By.id("date_picker_id_1")).getAttribute("value");
+			String dateParts11[] = SelectPageDate.split("-");
+			String uday1 = dateParts11[0];
+			String umonth1 = dateParts11[1];
+			String uyear1 = dateParts11[2];
+			System.out.println(umonth1 + " " + uday1 + " " + uyear1);
+			// to convert string to integer
+			int a1 = Integer.parseInt(umonth1);
+			int b1 = Integer.parseInt(uday1);
+		int	monthdiff1=a-a1;
+		for (int im = 0; im < monthdiff1 - 1; im++) {
+			driver.findElement(By.xpath("(//*[contains(text(),'Next')])[3]")).click();
+			Thread.sleep(3000);
+		}
+		
+			}
+
+			String[] myStringArray1 = { "January", "February", "March", "April", "May", "June", "July", "August",
+					"September", "October", "November", "December" };
+			String text = myStringArray1[a - 1];
+			System.out.println(text);
+			String cx = "//*[text()='";
+			String cx1 = "']//parent::div//parent::div//parent::div//a[text()='";
+			String cl = "']";
+			String xc = cx + text + cx1 + b + cl;
+			Thread.sleep(3000);
+			driver.findElement(By.xpath(xc)).click();
+
+			test.log(LogStatus.PASS, "Date selected successfully");
+			
+		
+			Thread.sleep(2000);
+			try {
+				if(driver.findElement(By.xpath("//*[@type='submit']")).isDisplayed())
+			driver.findElement(By.xpath("//*[@type='submit']")).click();
+			Thread.sleep(5000);
+			}
+			catch (Exception e) {
+				driver.findElement(By.id("AvailabilitySearchInputSelectView_ButtonSubmit")).click();
+			}
+			String farelx = "']//ancestor::tr//span[@class='flightfare']";
+			// *[text()='SG 3302']//ancestor::tr//span[@class='flightfare']
+			String Flightfare = driver.findElement(By.xpath(cx + FlightNo + farelx)).getText();
+			Flightfare = Flightfare.replace(" INR", "");
+			int Flightfare1 = util.price(Flightfare);
+			// String yourString="<2300";
+			Fare = Fare.replace("<", "");
+			int fareoriginal = Integer.parseInt(Fare);
+			System.out.println(Fare);
+			if (Flightfare1 < fareoriginal) {
+				driver.findElement(By.xpath(cx + FlightNo + farelx)).click();
+				// complete flow for booking step n pnr generation
+				// handle everything like booking flow with agent login for next pnr
+				driver.findElement(By.id("ControlGroupSelectView_ContactInputGSTViewSelectView_CheckBoxGST")).click();
+				driver.findElement(By.xpath("//*[text()='Continue']")).click();
+				String EmailID="";
+				
+				driver.findElement(By.id("CONTROLGROUPPASSENGER_ContactInputPassengerView_TextBoxHomePhone")).sendKeys("8524527137");
+				driver.findElement(By.id("CONTROLGROUPPASSENGER_ContactInputPassengerView_TextBoxOtherPhone")).sendKeys("8524527137");
+			String	Title="CONTROLGROUPPASSENGER_PassengerInputViewPassengerView_DropDownListTitle_";
+				String Fname="CONTROLGROUPPASSENGER_PassengerInputViewPassengerView_TextBoxFirstName_";
+				String Lname="CONTROLGROUPPASSENGER_PassengerInputViewPassengerView_TextBoxLastName_";
+			
+				//List<String> passinput=new ArrayList<>();
+
+				for (int j = 0; j < np; j++) {
+					//passinput.add(alltitle.get(j));
+					//passinput.add(allfname.get(j));
+					//passinput.add(alllname.get(j));
+					
+					
+				
+				//now we have to split into seprate string names.
+				//for(int getinput=0;getinput<np;getinput++){
+					
+					 
+					/*String valofpass=passinput.get(getinput);
+					String PassNameSplit[] = valofpass.split(" ");
+					String	headi = PassNameSplit[0];
+					String Fnamei=PassNameSplit[1];
+					String Lnamei=PassNameSplit[2];*/
+					
+					Select titleinfo=new Select(driver.findElement(By.id(Title+j)));
+					titleinfo.selectByValue(alltitle.get(j));
+					driver.findElement(By.id(Fname+j)).sendKeys(allfname.get(j));
+					driver.findElement(By.id(Lname+j)).sendKeys(alllname.get(j));
+					
+					EmailID=allfname.get(j)+alllname.get(j);
+				
+				}
+				driver.findElement(By.id("CONTROLGROUPPASSENGER_ContactInputPassengerView_TextBoxEmailAddress")).sendKeys(EmailID+util.randonNumber(3)+"@gmail.com");
+					for (int j = 0; j < np; j++) {
+					allfname.remove(j);
+					alltitle.remove(j);
+					alllname.remove(j);
+					
+				}
+					System.out.println(allfname.size());
+					System.out.println(alltitle.size());
+					System.out.println(alllname.size());
+					//add step for pnr n payment below
+					driver.findElement(By.xpath("//*[text()='Continue']")).click();
+					Thread.sleep(4000);
+					driver.findElement(By.id("spiceAssuranceBtn")).click();
+					driver.findElement(By.xpath("//*[text()='Continue']")).click();
+					Thread.sleep(10000);
+					driver.findElement(By.xpath("//*[text()='Skip to Continue']")).click();
+					Thread.sleep(9000);
+			}
+
+			
+			
+		}
+
+	}
+	/*@AfterMethod
+	void listval()
+	{
+		System.out.println("@AfterMethod:="+a);
+	}*/
+
+}

@@ -1,0 +1,75 @@
+/**
+ * 
+ */
+
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
+
+import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
+
+/**
+ * @author 29265
+ *
+ */
+public class browserOn extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					browserOn frame = new browserOn();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public browserOn() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.CENTER);
+		panel.setLayout(new BorderLayout(0,0));
+		
+		final JWebBrowser browser=new JWebBrowser();
+		browser.navigate("");
+		panel.add(browser,BorderLayout.CENTER);
+		
+		JPanel config=new JPanel(new BorderLayout());
+		config.setBorder(BorderFactory.createTitledBorder("config"));
+		String ls ="";
+		final JTextArea area=new JTextArea(
+				"<html>"+ls+
+				"<body>"+ls+
+				"<h1> some header </h1>"+ls+
+				"<p> a paragraph with <a href=\"https://www.google.com\">link</a>" +ls+
+				"</body>"+ls+
+				"</html>"
+				);
+		JScrollPane scroll = new JScrollPane(area);
+	}
+
+}

@@ -1,0 +1,103 @@
+-- VERSION_5
+-- START DISKCACHE_2
+C:\AutomationITC\.metadata\.plugins\org.eclipse.core.resources\.projects\PythonDemo\com.python.pydev.analysis\v2_indexcache
+PyAutomation.demo|1537168951606490000|C:\AutomationITC\PythonDemo\PyAutomation\demo.py
+PyAutomation.classObject|1549217084208072000|C:\AutomationITC\PythonDemo\PyAutomation\classObject.py
+PyAutomation.classs|1549219561953163000|C:\AutomationITC\PythonDemo\PyAutomation\classs.py
+PyAutomation.file1|1533373685666814000|C:\AutomationITC\PythonDemo\PyAutomation\file1.py
+PyAutomation.file4|1533808862019833000|C:\AutomationITC\PythonDemo\PyAutomation\file4.py
+PyAutomation.listfunction|1533536759800838000|C:\AutomationITC\PythonDemo\PyAutomation\listfunction.py
+PyAutomation.file3|1533538184827384000|C:\AutomationITC\PythonDemo\PyAutomation\file3.py
+PyAutomation.__init__|1533536759694518000|C:\AutomationITC\PythonDemo\PyAutomation\__init__.py
+PyAutomation.functiondef|1533536759775255000|C:\AutomationITC\PythonDemo\PyAutomation\functiondef.py
+PyAutomation.exception|1527581522831978000|C:\AutomationITC\PythonDemo\PyAutomation\exception.py
+PyAutomation.file|1533373219429806000|C:\AutomationITC\PythonDemo\PyAutomation\file.py
+PyAutomation.multiheri|1549217885661742000|C:\AutomationITC\PythonDemo\PyAutomation\multiheri.py
+PyAutomation.program|1549208961159156000|C:\AutomationITC\PythonDemo\PyAutomation\program.py
+PyAutomation.valnull|1534323948653758000|C:\AutomationITC\PythonDemo\PyAutomation\valnull.py
+-- END DISKCACHE
+-- START DICTIONARY
+34
+18=PyAutomation.classObject
+13=C:\AutomationITC\PythonDemo\PyAutomation\multiheri.py
+20=PyAutomation.classs
+7=C:\AutomationITC\PythonDemo\PyAutomation\listfunction.py
+21=C:\AutomationITC\PythonDemo\PyAutomation\demo.py
+30=second
+17=C:\AutomationITC\PythonDemo\PyAutomation\classObject.py
+23=C:\AutomationITC\PythonDemo\PyAutomation\exception.py
+5=C:\AutomationITC\PythonDemo\PyAutomation\functiondef.py
+24=PyAutomation.exception
+33=cat
+2=PyAutomation.file
+3=C:\AutomationITC\PythonDemo\PyAutomation\file3.py
+26=PyAutomation.program
+22=PyAutomation.demo
+9=C:\AutomationITC\PythonDemo\PyAutomation\file1.py
+19=C:\AutomationITC\PythonDemo\PyAutomation\classs.py
+10=PyAutomation.file1
+25=C:\AutomationITC\PythonDemo\PyAutomation\program.py
+16=PyAutomation.file4
+8=PyAutomation.listfunction
+11=C:\AutomationITC\PythonDemo\PyAutomation\valnull.py
+4=PyAutomation.file3
+28=Point
+6=PyAutomation.functiondef
+34=Point.__init__
+29=th
+1=C:\AutomationITC\PythonDemo\PyAutomation\file.py
+15=C:\AutomationITC\PythonDemo\PyAutomation\file4.py
+31=first.__init__
+32=dog
+27=first
+12=PyAutomation.valnull
+14=PyAutomation.multiheri
+-- END DICTIONARY
+-- START TREE 1
+34
+a|6|a!1^27#1*19@a!3^10#1*35@a!5^28#1*51@a!7^7#1*67@a!9^9#1*83@a!11^45#17*99@
+cat|1|cat!13^27#7*113@
+df_|4|df_count_val!15^10#1*131@df_new!11^32#1*99@df_count_val_T!15^13#1*131@df_data!15^9#1*131@
+dfn|1|dfnull!11^7#1*99@
+dic|2|dict!1^22#1*19@dict!3^26#5*35@
+dog|1|dog!13^24#7*113@
+dub|1|dublicate_val!15^15#1*131@
+f|3|f!3^8#1*35@f!9^7#1*83@f!1^25#1*19@
+fab|1|fab!5^10#5*50@
+fil|1|filterVariables!11^10#5*98@
+fir|2|first!13^6#7*113@first!17^6#7*145@
+i|2|i!7^13#1*67@i!9^20#13*83@
+id|1|id!3^13#1*35@
+key|3|key!1^9#1*19@keynew!9^23#1*83@key!9^11#1*83@
+lt_|1|lt_dict!3^19#1*35@
+nam|1|name!7^20#1*67@
+ob|2|ob!13^18#1*115@ob!17^18#1*147@
+p|2|p!9^25#5*83@p!5^26#1*51@
+p1|1|p1!19^17#1*163@
+p2|1|p2!19^18#1*163@
+poi|1|Point!19^6#7*161@
+pp|1|pp!3^23#5*35@
+rea|1|read!5^20#5*50@
+res|2|result!19^19#1*163@response!21^2#1*179@
+sec|2|second!17^12#7*145@second!13^12#7*113@
+st|2|st!9^14#1*83@st!1^12#1*19@
+th|1|th!13^15#7*113@
+thi|1|this_fails!23^6#5*194@
+typ|1|type!9^12#1*83@
+w|1|w!25^24#1*211@
+x|3|x!1^20#5*19@x!25^14#1*211@x!9^21#13*83@
+z|1|z!5^24#1*51@
+zz|1|zz!3^21#5*35@
+zzz|1|zzz!15^17#5*131@
+-- END TREE
+-- START TREE 2
+8
+__i|3|__init__!27&17^7#9*146@__init__!28&19^8#9*162@__init__!27&13^7#9*114@
+__s|1|__sub__!28&19^12#9*162@
+add|3|add1!29&13^16#9*114@add!30&17^13#9*146@add!30&13^13#9*114@
+age|2|age!31&17^9#9*147@age!31&13^9#9*115@
+nam|2|name!31&13^8#9*115@name!31&17^8#9*147@
+sho|4|show!27&13^10#9*114@show!32&13^25#9*114@show!33&13^28#9*114@show!27&17^10#9*146@
+x|1|x!34&19^9#7*163@
+y|1|y!34&19^10#7*163@
+-- END TREE

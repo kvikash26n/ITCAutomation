@@ -1,0 +1,12 @@
+MODULES_MANAGER_V2
+ApplicationLibraries.MulLib|C:\AutomationITC\GMES\ApplicationLibraries\MulLib.py
+ApplicationLibraries.SumLib|C:\AutomationITC\GMES\ApplicationLibraries\SumLib.py
+ApplicationLibraries.test|C:\AutomationITC\GMES\ApplicationLibraries\test.py
+GMESmarket.__init__|C:\AutomationITC\GMES\GMESmarket\__init__.py
+__init__|C:\AutomationITC\GMES\test\__init__.py
+component|C:\AutomationITC\GMES\test\component.py
+controller|C:\Users\29265\GMES\test\controller.py
+framework.__init__|C:\AutomationITC\GMES\framework\__init__.py
+framework.demoTest|C:\AutomationITC\GMES\framework\demoTest.py
+framework.seleniumGeneric|C:\AutomationITC\GMES\framework\seleniumGeneric.py
+pandasError|C:\AutomationITC\GMES\test\pandasError.py

@@ -1,0 +1,30 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+/**
+ * 
+ */
+
+/**
+ * @author 29265
+ *
+ */
+public class DemoNormal {
+
+	/**
+	 * @param args
+	 */
+	static WebDriver driver;
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		  System.setProperty("webdriver.chrome.driver","D:\\chromedriver.exe");
+          //D:\chromedriver_win32
+          // In	stantiation of driver object. To launch Firefox browser
+   // driver = new FirefoxDriver();
+    driver=new ChromeDriver();
+          // To oepn URL "http://softwaretestingmaterial.com"
+   driver.get("https://www.google.com/");
+   Thread.sleep(2000);
+	}
+
+}

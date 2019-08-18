@@ -1,0 +1,68 @@
+/**
+ * 
+ */
+package Test;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.BeforeSuite;
+
+import utility.util;
+
+/**
+ * @author 29265
+ *
+ */
+public class apttusreport extends TestControlAgent {
+	static String	day;
+	static String cod;
+	static String can;
+	static boolean flag=true;
+
+	WebDriver driver;
+	String nr, EmailID = "";
+	int a = 0, k = 3, b;
+	Map<String, Object[]> pnrdata = new TreeMap<String, Object[]>();
+	List<String> lines;
+	Select select;
+	static List<String> alltitle;
+	static List<String> allfname;
+	static List<String> alllname;
+
+	List<String> pnrrecord = new ArrayList<>();
+	List<String> AmountRecord = new ArrayList<>();
+	List<String> mList = new ArrayList<>();
+
+	/*
+	 * List<String> getPassengersName(String path) throws IOException { lines =
+	 * Files.readAllLines(Paths.get(path)); System.out.println("before booking:=" +
+	 * lines.size()); // System.out.println(lines.get(2)); for (String line : lines)
+	 * { System.out.println(line); } return lines; }
+	 */
+	// pnr, Amount, EmailID, "LASTNAME"
+public static void main(String ag[]) throws InvalidFormatException, IOException {
+	System.out.println("name");
+	//util.GetColumnValue(0, "Passenger_Name_List");
+	alltitle = util.GetColumnValue(0, "Sheet1");
+	//allfname = util.GetColumnValue(1, "Passenger_Name_List");
+	//alllname = util.GetColumnValue(2, "Passenger_Name_List");
+	System.err.println("done");
+}
+	/*void initial() throws InvalidFormatException, IOException {
+		util.GetColumnValue(0, "Passenger_Name_List");
+		alltitle = util.GetColumnValue(0, "Passenger_Name_List");
+		allfname = util.GetColumnValue(1, "Passenger_Name_List");
+		alllname = util.GetColumnValue(2, "Passenger_Name_List");
+		System.err.println("done");*/
+		
+
+		
+
+}

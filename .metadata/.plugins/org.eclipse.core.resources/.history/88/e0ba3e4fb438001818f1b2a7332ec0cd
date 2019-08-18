@@ -1,0 +1,18 @@
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Welcome {
+
+	public static void main(String[] args) {
+		System.out.println("Welcome");
+		String path="D:\\Selenium\\chromedriver.exe";
+		System.setProperty("webdriver.chrome.driver", path);
+		WebDriver dr=new ChromeDriver();
+		dr.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		dr.get("http://www.spicejet.com/");
+		
+	}
+
+}

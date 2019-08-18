@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;SpiceJetApp&apos; to &apos;SpiceJetMobileApp&apos;&#x0D;&#x0A;- Original project: &apos;ITCHotelMobileApp&apos;&#x0D;&#x0A;- Original element: &apos;SpiceJetApp&apos;&#x0D;&#x0A;- Renamed element: &apos;SpiceJetMobileApp&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;SpiceJetApp&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/test\/java&lt;{SpiceJetApp.java[SpiceJetApp" matchStrategy="1" name="SpiceJetMobileApp" qualified="false" references="true" similarDeclarations="false" stamp="1544003008775" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;seleniumPOC.py&apos; to &apos;Scripts&apos;&#x0D;&#x0A;- Original project: &apos;Petra_POC&apos;&#x0D;&#x0A;- Destination element: &apos;Scripts&apos;&#x0D;&#x0A;- Original element: &apos;seleniumPOC.py&apos;" description="Copy file" element1="main_script/seleniumPOC.py" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1538927311747" target="/Maersk_POC/Test/Scripts" units="0" version="1.0"/>
+</session>

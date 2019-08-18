@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project &apos;NetChef&apos; to &apos;SpiceJet&apos;&#x0D;&#x0A;- Original element: &apos;NetChef&apos;&#x0D;&#x0A;- Renamed element: &apos;NetChef&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename Java project &apos;NetChef&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=NetChef" name="SpiceJet" references="true" stamp="1543998860629" version="1.0"/>
+</session>

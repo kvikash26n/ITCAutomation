@@ -1,0 +1,269 @@
+package Test;
+
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.interactions.touch.TouchActions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.LogStatus;
+
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.ScreenshotState;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
+import io.appium.java_client.remote.MobileCapabilityType;
+
+/**
+ * 
+ */
+
+/**
+ * @author 29265
+ * Kumar Vikash
+ *
+ */
+public class SpiceJetApp extends TestControlAgent {
+	public static AndroidDriver driver;
+
+	File classpathRoot = new File(System.getProperty("user.dir"));
+	File appDir = new File(classpathRoot, "/src/file/");
+	File app = new File(appDir, "SpiceJ.apk");
+	
+	public void getresult(ITestResult result) throws IOException {
+		if (result.getStatus() == ITestResult.SUCCESS) {
+
+			test.log(LogStatus.PASS, result.getName() + " test is pass");
+
+		} else if (result.getStatus() == ITestResult.SKIP) {
+			test.log(LogStatus.SKIP,
+					result.getName() + " test is skipped and skip reason is:-" + result.getThrowable());
+		} else if (result.getStatus() == ITestResult.FAILURE) {
+			test.log(LogStatus.FAIL, result.getName() + " test is failed" + result.getThrowable());
+			String screen = getScreenshot("SJApp");
+			test.log(LogStatus.FAIL, test.addScreenCapture(screen));
+		} else if (result.getStatus() == ITestResult.STARTED) {
+			test.log(LogStatus.INFO, result.getName() + " test is started");
+		}
+	}
+	public String getScreenshot(String imageName) throws IOException {
+		File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		String imagelocation = System.getProperty("user.dir") + "\\src\\screenshot\\";
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
+		String actualImageName = imagelocation + imageName + "_" + formater.format(calendar.getTime()) + ".png";
+		File destFile = new File(actualImageName);
+		FileUtils.copyFile(image, destFile);
+		return actualImageName;
+
+	}
+
+	@AfterMethod
+	public void afterMethod(ITestResult result) throws IOException {
+
+		getresult(result);
+	}
+
+	@BeforeMethod()
+	public void beforeMethod(Method result) {
+		test = extent.startTest(result.getName());
+		test.log(LogStatus.INFO, result.getName() + " test Started");
+		test.log(LogStatus.INFO, result.getParameterCount() + " " + "inputs");
+
+	}
+
+	@BeforeMethod
+	public void setUp() throws Exception {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+
+		capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
+		capabilities.setCapability("noReset", "false");
+		// 52005f904997a41b 8.1.0 neha BARCFIJRIVKVWWDE 6.0 vikash 4TCUP7RGCELRT4DU 7.0
+		capabilities.setCapability("deviceName", "BARCFIJRIVKVWWDE");
+		capabilities.setCapability("platformVersion", "6.0");
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("app", app.getAbsolutePath());
+		capabilities.setCapability("appPackage", "com.vl.spicejet");
+		capabilities.setCapability("--session-override", "true");
+		capabilities.setCapability("autoGrantPermissions", "true");
+		// com.vl.spicejet/com.vl.spicejet.home.HomeActivity
+		capabilities.setCapability("appActivity", "com.vl.spicejet.home.HomeActivity");
+		capabilities.setCapability("skipUnlock", "true");
+		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "100");
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		test.log(LogStatus.PASS, "app has been launch");
+		// driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
+		// capabilities);
+		// com.inspirenetz.app.netzchef/com.inspirenetz.app.netzchef.LoginActivity
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		Thread.sleep(10000);
+	}
+
+	@Test(dataProvider = "dataLoader")
+	public void select(String DepartureCity, String ArrivalCity, String Email, String Mobile, String FirstName,
+			String LastName, String DebitcardNum,String Expiry,String CVV) throws InterruptedException, IOException {
+		// Thread.sleep(5000);
+		driver.findElementById("com.vl.spicejet:id/fromtv").click();
+		driver.findElementByClassName("android.widget.EditText").sendKeys(DepartureCity);
+		driver.findElementById("com.vl.spicejet:id/tv_city_name").click();
+		String sc = getScreenshot("Spicejet");
+		test.log(LogStatus.PASS,
+				"City Name",DepartureCity+" "+ArrivalCity);
+		test.log(LogStatus.PASS, test.addScreenCapture(sc));
+		// to location
+		driver.findElementById("com.vl.spicejet:id/totv").click();
+		driver.findElementById("com.vl.spicejet:id/et_search").sendKeys(ArrivalCity);
+		driver.findElementById("com.vl.spicejet:id/tv_city_name").click();
+		// com.vl.spicejet:id/iv_add_choose_seat
+		// date selection
+		driver.findElementById("com.vl.spicejet:id/llDateLayout").click();
+		String visibleText="April 2019";
+		//public void scrollAndClick(String visibleText) {
+		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))").click();
+		      //  }
+		  //  }
+		Thread.sleep(4000);
+		MobileElement el1 = (MobileElement) driver.findElementByXPath(
+				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ListView/android.widget.LinearLayout[2]/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.FrameLayout[4]/android.widget.TextView");
+		el1.click();
+		
+		//driver.findElement(By.xpath("//android.widget.TextView[contains(text(),'3')]")).click();
+		 sc = getScreenshot("DatePicker");
+		test.log(LogStatus.PASS,"Date selected");
+		test.log(LogStatus.PASS, test.addScreenCapture(sc));
+		//trying scroll
+		//Screenshots ss= new ScreenshotState((AndroidDriver<MobileElement>) driver);
+		
+		
+		
+		//	
+		//TouchActions action = new TouchActions(driver);
+		//action.scroll(driver.findElementByXPath("//*[text()='February 2019']"), 10, 100);
+		//action.perform();
+		// driver.scrollTo("Date Widgets");
+		//System.out.println(driver.findElement(By.xpath("//*contains[text(),'December 2018']\")")).getText());
+		//driver.findElement(By.xpath("//*[@class='android.widget.TextView' and @bounds='[48,1114][188,1254]']")).click();
+		
+		// driver.findElementBy().click();
+		// search flights
+		driver.findElementById("com.vl.spicejet:id/find_flights").click();
+		driver.findElement(By.xpath("//*[@class='android.widget.RelativeLayout' and @bounds='[0,579][1080,779]']"))
+				.click();
+		driver.findElementById("com.vl.spicejet:id/tv_next").click();
+		driver.findElementById("com.vl.spicejet:id/etEmailId").sendKeys(Email);
+		driver.findElementById("com.vl.spicejet:id/etMobileNumber").sendKeys(Mobile);
+		driver.pressKeyCode(AndroidKeyCode.BACK);
+		driver.findElementById("com.vl.spicejet:id/add_pass_tv").click();
+		driver.findElementById("com.vl.spicejet:id/rbMale").click();
+		driver.findElementById("com.vl.spicejet:id/etFirstName").sendKeys(FirstName);
+		driver.findElementById("com.vl.spicejet:id/etLastName").sendKeys(LastName);
+		driver.pressKeyCode(AndroidKeyCode.BACK);
+		driver.findElementById("com.vl.spicejet:id/tvSave").click();
+
+		driver.findElementById("com.vl.spicejet:id/profile_arrow").click();
+		driver.findElementById("com.vl.spicejet:id/tv_next").click();
+		driver.findElementById("com.vl.spicejet:id/tv_next").click();
+		driver.findElementById("com.vl.spicejet:id/include_debit_credit_card_layout").click();
+		// invalid debit card details validation
+		driver.findElementById("com.vl.spicejet:id/etCardNumber").sendKeys(DebitcardNum);
+		driver.pressKeyCode(AndroidKeyCode.BACK);
+		driver.findElementById("com.vl.spicejet:id/etExpiryDate").sendKeys(Expiry);
+		driver.findElementById("com.vl.spicejet:id/etCVV").sendKeys(CVV);
+		driver.pressKeyCode(AndroidKeyCode.BACK);
+		driver.findElementById("com.vl.spicejet:id/tilPersonName").sendKeys(FirstName+" "+LastName);
+		driver.pressKeyCode(AndroidKeyCode.BACK);
+		String price=driver.findElementById("com.vl.spicejet:id/tv_total_flight_price").getText();
+		System.out.println("The total price for your ticket is:"
+				+ driver.findElementById("com.vl.spicejet:id/tv_total_flight_price").getText());
+		// failure
+		String paymentsc = getScreenshot("paymentDetails");
+		test.log(LogStatus.PASS,"Payment screen: "+price);
+		test.log(LogStatus.PASS, test.addScreenCapture(paymentsc));
+		
+
+		System.out.println("the total price is:"+driver.findElement(By.xpath("(//*[@id='com.vl.spicejet:id/tv_total_flight_price' and @bounds='[90,1821][223,1880]'])[2]")).getText());
+		driver.findElementById("com.vl.spicejet:id/tv_next").click();
+		Thread.sleep(5000);
+		
+		//id: com.vl.spicejet:id/tv_total_flight_price
+		
+		
+		// File file = driver.getScreenshotAs(OutputType.FILE);
+		// FileUtils.copyFile(file, new File("myScreenshot.png");
+
+		/*
+		 * driver.findElementById("lblLoginPageTitle").click();
+		 * //driver.findElementById("com.inspirenetz.app.netzchef:id/lblLoginPageTitle")
+		 * .click(); MobileElement el1 = (MobileElement)
+		 * driver.findElementById("com.inspirenetz.app.netzchef:id/lblLoginPageTitle");
+		 * el1.click();com.vl.spicejet:id/ll_price_total
+		 * 
+		 * System.out.println(driver.findElementById("txtUsername").isDisplayed());
+		 * driver.findElementById("txtUsername").sendKeys("abc");; // MobileElement el1
+		 * = (MobileElement) driver.findElementById("com.vl.spicejet:id/find_flights");
+		 * //el1.click();
+		 * 
+		 * // boolean
+		 * dis=driver.findElementById("com.vl.spicejet:id/find_flights").isDisplayed();
+		 * //System.out.println(dis); // com.vl.spicejet:id/totv //BLR
+		 * driver.findElementById("totv").click(); Thread.sleep(5000);
+		 * System.out.println("page open");
+		 */}
+
+	/*@AfterMethod
+	public void End() {
+		driver.quit();
+	}*/
+/*
+public void swipev(){
+Dimension dim=driver.manage().window().getSize();
+int height=dim.getHeight();
+int width=dim.getWidth();
+int x=width/2;
+int starty=(int) (height*0.8);
+int endy=(int) (height*0.2);
+                //driver.swipe(x,starty,x,endy,500);             
+                      
+
+TouchAction ts = new TouchAction(driver);
+ts.press(x, starty).moveTo(x, endy).release().perform();
+}
+
+public void clicktab(){
+boolean flag=false;
+//driver.findElement(By.xpath("//contains[text(),“December 2018”]"));
+for(int i=0;i<=20;i++)
+                {
+                try{
+                                Thread.sleep(500);               
+                                driver.findElement).click();
+                                flag=true;
+                                break;
+                    }
+                catch(Exception e)
+                {
+                                swipev();
+                }
+                }
+}
+*/
+}

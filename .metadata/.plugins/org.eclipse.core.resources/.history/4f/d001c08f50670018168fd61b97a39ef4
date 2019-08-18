@@ -1,0 +1,20 @@
+package com.spicejet;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String ag[])
+    {
+        WebDriver driver=new HtmlUnitDriver(true);
+      //  ((HtmlUnitDriver) driver).setJavascriptEnabled(true);
+        driver.get("https://www.google.com/");
+        String aString=driver.getTitle();
+    System.out.println(aString);
+    }
+}

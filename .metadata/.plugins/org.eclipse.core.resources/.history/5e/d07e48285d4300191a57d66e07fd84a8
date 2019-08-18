@@ -1,0 +1,17 @@
+'''
+Created on Mar 10, 2019
+
+@author: 29265
+'''
+'''
+class GEMSComp:
+    def sum(self,a,b):
+        self.a=a
+        self.b=b
+        c=a+b
+        return c
+
+ob=GEMSComp()
+summ=ob.sum(2, 4)
+print(summ)
+'''

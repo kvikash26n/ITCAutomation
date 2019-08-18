@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Petra_POC/main_script/runnable_v1.py&apos; to &apos;runnable_v1_1.py&apos;" description="Rename resource &apos;runnable_v1.py&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="main_script/runnable_v1.py" name="runnable_v1_1.py" stamp="1538113133398" updateReferences="true"/>
+</session>

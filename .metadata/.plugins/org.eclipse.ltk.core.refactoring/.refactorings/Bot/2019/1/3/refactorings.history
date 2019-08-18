@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;util.java&apos; to &apos;SanityBot/src/com.bot&apos;&#x0D;&#x0A;- Original project: &apos;Bot&apos;&#x0D;&#x0A;- Destination element: &apos;SanityBot/src/com.bot&apos;&#x0D;&#x0A;- Original element: &apos;BOTurlChecks.util.java&apos;" description="Copy compilation unit" destination="=SanityBot/src&lt;com.bot" element1="/src&lt;BOTurlChecks{util.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1547401540871" units="1" version="1.0"/>
+</session>
